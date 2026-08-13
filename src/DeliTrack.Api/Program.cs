@@ -100,12 +100,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// CORS Configuration for React Client
+// CORS Configuration for React Client & Vercel Deployments
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://localhost:3000", "https://localhost:5173")
+        policy.SetIsOriginAllowed(_ => true)
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
