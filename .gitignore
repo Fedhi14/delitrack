@@ -1,0 +1,31 @@
+# Node & Dependencies
+node_modules/
+.pnpm-store/
+client/node_modules/
+
+# Build Outputs
+dist/
+client/dist/
+bin/
+obj/
+out/
+src/DeliTrack.Api/bin/
+src/DeliTrack.Api/obj/
+
+# Database & SQLite files
+*.db
+*.db-shm
+*.db-wal
+delitrack.db
+
+# Environment & Logs
+.env
+.env.local
+*.log
+.system_generated/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
