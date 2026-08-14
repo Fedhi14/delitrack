@@ -105,10 +105,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.SetIsOriginAllowed(_ => true)
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowAnyMethod();
     });
 });
 
@@ -132,10 +131,9 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Middleware Pipeline
+app.UseCors("AllowReactApp");
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DeliTrack API v1"));
-
-app.UseCors("AllowReactApp");
 app.UseAuthentication();
 app.UseAuthorization();
 
