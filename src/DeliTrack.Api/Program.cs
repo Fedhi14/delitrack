@@ -10,13 +10,6 @@ using DeliTrack.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Disable file watcher reloadOnChange to prevent Linux container inotify limits crash on cloud hosts
-builder.Configuration.Sources.Clear();
-builder.Configuration
-    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
-    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: false)
-    .AddEnvironmentVariables();
-
 // Add Services to Container
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

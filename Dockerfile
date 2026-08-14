@@ -8,5 +8,6 @@ WORKDIR /app
 COPY --from=build /app/out .
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
-ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+ENV DOTNET_USE_POLLING_FILE_WATCHER=1
+ENV ASPNETCORE_hostBuilder__reloadConfigOnChange=false
 ENTRYPOINT ["dotnet", "DeliTrack.Api.dll"]
