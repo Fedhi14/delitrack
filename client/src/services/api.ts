@@ -1,15 +1,13 @@
 import axios from 'axios';
 import { Order, OrderStatus, DriverProfile, DashboardStats } from '../types';
 
-const getApiBase = () => {
-  if (import.meta.env.VITE_API_BASE_URL) return import.meta.env.VITE_API_BASE_URL;
-  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    return 'https://delitrack-app.onrender.com/api';
-  }
-  return 'http://localhost:5000/api';
-};
+const PRODUCTION_API = 'https://delitrack-app.onrender.com/api';
+const LOCAL_API = 'http://localhost:5000/api';
 
-const API_BASE = getApiBase();
+const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+  ? LOCAL_API
+  : PRODUCTION_API;
+
 
 const api = axios.create({
   baseURL: API_BASE,
