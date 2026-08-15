@@ -144,6 +144,7 @@ app.MapGet("/", () => Results.Ok(new
 {
     Service = "DeliTrack API Platform",
     Status = "Online",
+    Deployed = true,
     Documentation = "/swagger",
     Timestamp = DateTime.UtcNow
 }));
